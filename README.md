@@ -1,4 +1,4 @@
-### Instructions to run the ai agent:
+### Instructions:
 
 ### 1. Clone the repo and open in a code editor
 
@@ -34,7 +34,7 @@ uv add -r requirements.txt
 ### 5. Create a file named '.env' and paste your api key there
 
 ```bash
-GOOGLE_API_KEY="<your api key>"
+GOOGLE_API_KEY="your api key"
 ```
 
 ### 6. Run the agent to generate parser code and validate
@@ -46,4 +46,5 @@ python agent.py --target icici
 ```bash
 pytest
 ```
+
 
