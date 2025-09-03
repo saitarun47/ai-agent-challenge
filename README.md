@@ -41,10 +41,12 @@ GOOGLE_API_KEY="your api key"
 ```bash
 python agent.py --target icici
 ```
+**NOTE:** If the agent produces partial output or fails, simply re-run step 6 again. The agent has built-in retry logic, but a fresh start often resolves temporary issues.
 
 ### 7. Run pytest
 ```bash
 pytest
 ```
+
 
 
