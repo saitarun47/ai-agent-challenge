@@ -71,7 +71,7 @@ class ParserAgent:
         if self.csv_path:
             logger.info(f"Found csv for validation:{self.csv_path}")
 
-        
+    ### Analyze the pdf structure    
     def analyze_pdf_structure(self) -> str :
         logger.info(f"Analyzing pdf structure:{self.pdf_path}")
 
@@ -99,7 +99,8 @@ class ParserAgent:
         analysis = response.content.strip()
         logger.info(f"PDF analysis completed")
         return analysis
-    
+        
+    ### Generate the parser code after analysing the pdf
     def generate_parser_code(self,pdf_analysis: str, attempt: int=1) -> str:
         logger.info(f"Generating parser code (attempt {attempt}/{self.max_attempts})")
 
@@ -177,7 +178,7 @@ class ParserAgent:
         code = code.strip()
         return code
     
-
+    ### Test the parser code
     def test_parser(self) -> tuple[bool, pd.DataFrame, str]:
         logger.info(f"Testing generated parser")
 
@@ -210,7 +211,7 @@ class ParserAgent:
             logger.error(error_message)
             return False , None , error_message
         
-
+    ### Check if the generated csv file matches the excpected given csv
     def validate(self , result_df : pd.DataFrame) -> tuple[bool,str]:
         logger.info(f"Validating against expected output")
 
@@ -237,7 +238,9 @@ class ParserAgent:
         except Exception as e:
             logger.error(f"validation error: {e}")
             return False , f"validation failed: {str(e)}"
-        
+
+    
+    ### Workflow (plan → generate code → run tests→ self-fix)    
     def run(self) -> bool:
         logger.info(f"Starting parser generation for {self.target_bank}")
 
