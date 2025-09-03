@@ -49,4 +49,6 @@ pytest
 ```
 
 
+### One-paragraph agent diagram:
+The agent implements an autonomous plan → analyze → generate → test → self-fix loop using Google Gemini for intelligent parser code generation. It begins by analyzing the input PDF to discover table structures, column patterns, data formats, and extraction challenges, then generates Python parsing code using multiple fallback strategies (pdfplumber table extraction, text pattern matching, and PyPDF2 raw extraction). The generated parser is immediately tested against the sample PDF, with output validated using pandas DataFrame.equals() against expected CSV data. When validation fails, the agent captures detailed error feedback and automatically regenerates improved code for up to 5 attempts (which can be changed in the code), incorporating lessons from previous failures to iteratively refine the parsing logic until it produces accurate PDF parsers that match the exact specification.
 
